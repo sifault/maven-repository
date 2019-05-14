@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.badger</groupId>
+  <artifactId>redisson-spring-boot-starter</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190514071058</lastUpdated>
+  </versioning>
+</metadata>
