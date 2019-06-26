@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>org.badger</groupId>
+    <artifactId>micro-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>micro-parent</name>
+    <description>micro-parent</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <github.global.server>github</github.global.server>
+        <!-- spring包 -->
+        <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot-admin.version>2.1.0</spring-boot-admin.version>
+
+
+
+        <!-- 私有包 -->
+        <fastdfs-spring-boot-starter.version>1.0.0-SNAPSHOT</fastdfs-spring-boot-starter.version>
+        <redisson-spring-boot-starter.version>1.0.0-SNAPSHOT</redisson-spring-boot-starter.version>
+        <!-- starer包 -->
+        <pagehelper-spring-boot-starter.version>1.2.12</pagehelper-spring-boot-starter.version>
+
+        <!-- 公共包 -->
+        <lombok.version>1.18.6</lombok.version>
+        <mysql.version>8.0.16</mysql.version>
+        <druid.version>1.1.17</druid.version>
+        <dubbo.version>2.7.2</dubbo.version>
+        <javax.servlet.version>4.0.1</javax.servlet.version>
+        <gson.version>2.8.5</gson.version>
+        <guava.version>28.0-jre</guava.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <zxing.version>3.4.0</zxing.version>
+        <commons-io.version>1.3.2</commons-io.version>
+        <commons-exec.version>1.3</commons-exec.version>
+        <commons-configuration2.version>2.5</commons-configuration2.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <commons-compress.version>1.18</commons-compress.version>
+        <commons-net.version>3.6</commons-net.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-collections4.version>4.3</commons-collections4.version>
+        <commons-dbcp2.version>2.6.0</commons-dbcp2.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <commons-codec.version>1.12</commons-codec.version>
+        <commons.lang3.version>3.9</commons.lang3.version>
+        <commons-pool2.version>2.6.2</commons-pool2.version>
+        <commons-httppclient.version>3.1</commons-httppclient.version>
+        <bcprov-jdk16.version>1.45</bcprov-jdk16.version>
+        <httpasyncclient.version>4.1.3</httpasyncclient.version>
+        <poi.version>4.1.0</poi.version>
+        <io.netty.version>3.10.6.Final</io.netty.version>
+        <io.netty.all.version>4.1.36.Final</io.netty.all.version>
+        <castor-xml.version>1.3.2</castor-xml.version>
+        <cglib.version>3.2.12</cglib.version>
+        <concurrentlinkedhashmap-lru.version>1.4.2</concurrentlinkedhashmap-lru.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <hutool-all.version>4.5.15</hutool-all.version>
+        <easyexcel.version>1.1.1</easyexcel.version>
+
+        <!-- maven 插件-->
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+        <maven-pmd-plugin.version>3.11.0</maven-pmd-plugin.version>
+        <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
+        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- spring boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud Alibaba -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- spring boot admin 依赖 -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <!-- pagehelper 依赖 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!-- fastdfs 依赖 -->
+            <dependency>
+                <groupId>org.badger</groupId>
+                <artifactId>fastdfs-spring-boot-starter</artifactId>
+                <version>${fastdfs-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!-- redisson 依赖 -->
+            <dependency>
+                <groupId>org.badger</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!-- mysql 依赖 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- druid 依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+
+            <!-- lombok 依赖 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.6</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- dubbo 依赖 -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <!-- servlet 依赖 -->
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>${javax.servlet.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.version}</version>
+            </dependency>
+
+            <!-- gson 依赖 -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <!-- guava 依赖 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <!-- fastjson 依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- zxing 依赖 -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+
+            <!-- commons-io 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <!-- commons-exec 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-exec</artifactId>
+                <version>${commons-exec.version}</version>
+            </dependency>
+
+            <!-- commons-configuration2 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>${commons-configuration2.version}</version>
+            </dependency>
+
+            <!-- commons-math 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${commons-math3.version}</version>
+            </dependency>
+
+            <!-- commons-compress 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
+
+            <!-- commons-net 依赖 -->
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <!-- commons-fileupload 依赖 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+
+            <!-- commons-collections 依赖 -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+
+            <!-- commons-collections4 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
+            <!-- commons-dbcp2 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${commons-dbcp2.version}</version>
+            </dependency>
+
+            <!-- commons-beanutils 依赖 -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+
+            <!-- commons-codec 依赖 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+
+            <!-- commons.lang3 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+
+            <!-- commons-pool2 依赖 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <!-- commons-httpclient 依赖 -->
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons-httppclient.version}</version>
+            </dependency>
+
+            <!-- bcprov-jdk16加密包 依赖 -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk16</artifactId>
+                <version>${bcprov-jdk16.version}</version>
+            </dependency>
+
+            <!-- httpasyncclient 依赖 -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>${httpasyncclient.version}</version>
+            </dependency>
+
+            <!-- poi 依赖 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- netty 依赖 -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty</artifactId>
+                <version>${io.netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${io.netty.all.version}</version>
+            </dependency>
+
+            <!-- castor-xml xml和java对象的转换 依赖 -->
+            <dependency>
+                <groupId>org.codehaus.castor</groupId>
+                <artifactId>castor-xml</artifactId>
+                <version>${castor-xml.version}</version>
+            </dependency>
+
+            <!-- cglib 依赖 -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
+            <!-- concurrentlinkedhashmap-lru 依赖 -->
+            <dependency>
+                <groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+                <artifactId>concurrentlinkedhashmap-lru</artifactId>
+                <version>${concurrentlinkedhashmap-lru.version}</version>
+            </dependency>
+
+            <!-- swagger2 依赖 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <!-- hutool-all 依赖 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}}</version>
+            </dependency>
+
+            <!-- easyexcel 依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 环境配置 -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+                <framework.version>1.0.0-SNAPSHOT</framework.version>
+                <framework.dubbo.version>1.0.0-SNAPSHOT</framework.dubbo.version>
+                <framework.build.version>1.0.0-SNAPSHOT</framework.build.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+                <framework.version>1.0.0-SNAPSHOT</framework.version>
+                <framework.dubbo.version>1.0.0-SNAPSHOT</framework.dubbo.version>
+                <framework.build.version>1.0.0-SNAPSHOT</framework.build.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>test2</id>
+            <properties>
+                <env>test2</env>
+                <framework.version>1.0.0-SNAPSHOT</framework.version>
+                <framework.dubbo.version>1.0.0-SNAPSHOT</framework.dubbo.version>
+                <framework.build.version>1.0.0-SNAPSHOT</framework.build.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>test3</id>
+            <properties>
+                <env>test3</env>
+                <framework.version>1.0.0-SNAPSHOT</framework.version>
+                <framework.dubbo.version>1.0.0-SNAPSHOT</framework.dubbo.version>
+                <framework.build.version>1.0.0-SNAPSHOT</framework.build.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>pre</id>
+            <properties>
+                <env>preProduct</env>
+                <framework.version>1.0.0-SNAPSHOT</framework.version>
+                <framework.dubbo.version>1.0.0-SNAPSHOT</framework.dubbo.version>
+                <framework.build.version>1.0.0-SNAPSHOT</framework.build.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+                <framework.version>1.0.0-SNAPSHOT</framework.version>
+                <framework.dubbo.version>1.0.0-SNAPSHOT</framework.dubbo.version>
+                <framework.build.version>1.0.0-SNAPSHOT</framework.build.version>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- 私有仓库配置 -->
+    <!--<repositories>
+        <repository>
+            <id>maven-repository</id>
+            <url>https://raw.github.com/505357999/maven-repository/master</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>-->
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <!-- 发布到本地 -->
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.1</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <!-- 发布到github服务器 -->
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>
+                    <noJekyll>true</noJekyll>
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                    <!--分支-->
+                    <branch>refs/heads/master</branch>
+                    <merge>true</merge>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <!--对应github上创建的仓名称name-->
+                    <repositoryName>maven-repository</repositoryName>
+                    <!--github 仓库所有者即登录用户名-->
+                    <repositoryOwner>505357999</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                    <configuration>
+                        <parameters>true</parameters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.1.1.RELEASE</version>
+                    <executions>
+                        <execution>
+                            <id>repackage</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <delimiters>
+                            <delimiter>${resource.delimiter}</delimiter>
+                        </delimiters>
+                        <useDefaultDelimiters>false</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <jvmTarget>${java.version}</jvmTarget>
+                        <javaParameters>true</javaParameters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>${findbugs-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${maven-pmd-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>${maven-jxr-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
